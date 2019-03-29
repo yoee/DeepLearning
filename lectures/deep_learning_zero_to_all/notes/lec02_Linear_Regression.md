@@ -1,5 +1,3 @@
-##  
-
 # Linear Regression
 
 [수식 보는 방법](<https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima/related?hl=en>)
@@ -22,7 +20,7 @@ $$
 $$
 cost(W, b) = \frac{1}{m}\sum_{i=1}^m (H(x^{(i)})-y^{(i)})^2
 $$
-참고로, 여기서 `H(x) - y` 값을 제곱 시켜준 것은, 양수/음수의 경우 상관 없이 하기 위하여 + 차이가 클 때 더 큰 패널티를 주기 위한 것.
+참고로, 여기서 `H(x) - y` 값을 제곱 시켜준 것은, 양수/음수의 경우 상관 없이 하기 위하여, 그리고 차이가 클 때 더 큰 패널티를 주기 위한 것.
 
 결론적으로 우리가 해야하는 것은.. cost를 최소화하는 W, b 찾는 것. 그것이 가장 적절한 Hypothesis를 찾는 방법!
 $$
