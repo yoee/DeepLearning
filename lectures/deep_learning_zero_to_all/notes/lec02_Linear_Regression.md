@@ -2,6 +2,8 @@
 
 # Linear Regression
 
+[수식 보는 방법](<https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima/related?hl=en>)
+
 </br>
 
 ## (Linear) Hypothesis
