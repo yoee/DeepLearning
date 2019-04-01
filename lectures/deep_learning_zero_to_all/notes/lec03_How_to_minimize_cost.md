@@ -37,6 +37,10 @@ Convex function… 어려운 거 아니당. 그냥 볼록함수라는 의미 ㅎ
 
 Gradient descent algorithm은 그리디 방식으로 순간 순간 최적의 선택을 한다. 즉, 더 낮아보이는 경사로 전체 그래프를 고려한 것이 아닌, 그 순간의 판단으로 내려간다. 그리디 방식을 채택하기 위해서는 이 순간의 선택이 전체에서도 최적의 선택을 만들어 줄 수 있다는 것을 증명해야 한다. 그렇기 때문에, 고려해야 하는 것이 convex function 여부. 
 
+> gradient decent (경사 하강법)
+>
+> **경사 하강법**(傾斜下降法, Gradient descent)은 [1차 근삿값](https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%82%BF%EA%B0%92%EC%9D%98_%EC%88%9C%EC%84%9C) 발견용 [최적화](https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%A0%81%ED%99%94_%EB%AC%B8%EC%A0%9C) [알고리즘](https://ko.wikipedia.org/wiki/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98)이다. 기본 아이디어는 함수의 [기울기](https://ko.wikipedia.org/wiki/%EA%B8%B0%EC%9A%B8%EA%B8%B0_(%EB%B2%A1%ED%84%B0))(경사)를 구하여 기울기가 낮은 쪽으로 계속 이동시켜서 [극값](https://ko.wikipedia.org/wiki/%EA%B7%B9%EA%B0%92)에 이를 때까지 반복시키는 것이다. [[출처]](<https://ko.wikipedia.org/wiki/%EA%B2%BD%EC%82%AC_%ED%95%98%EA%B0%95%EB%B2%95>)
+
 그리고, 아래 그래프는 Gradient descent algorithm가 적용될 수 없는 경우.
 
 ![스크린샷 2019-03-29 오후 7.19.54](./assets/lec02_2.png)
