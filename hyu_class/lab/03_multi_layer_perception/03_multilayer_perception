@@ -33,13 +33,13 @@ total_batch = int(mnist.train.num_examples / batch_size)
 
 for epoch in range(50):
     total_cost = 0
-
+    
     for i in range(total_batch):
         batch_xs, batch_ys = mnist.train.next_batch(batch_size)
-        _, cost_val = sess.run([opt, cost], feed_dict={X: batch_xs, Y: batch_ys})
+        _, cost_val = sess.run([opt, cost], feed_dict={X: batch_xs, Y:batch_ys})
         total_cost += cost_val
     print('Epoch :', '%04d' % (epoch + 1), 'Avg. cost =', '{:.3f}'.format(total_cost / total_batch))
-
+    
 is_correct = tf.equal(tf.argmax(model, 1), tf.math.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
 print('정확도', sess.run(accuracy, feed_dict={X: mnist.test.images, Y: mnist.test.labels}))
