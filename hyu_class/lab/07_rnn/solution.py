@@ -28,16 +28,30 @@ learning_rate = 0.1
 # In[3]:
 
 
-sample_idx = [char_dic[c] for c in sentence]
-x_data = [sample_idx[:-1]]  # 0 ~ n-1
-y_data = [sample_idx[1:]]  # 1 ~ n
+dataX = []
+dataY = []
+for i in range(0, len(sentence) - sequence_length):
+    x_str = sentence[i:i + sequence_length]
+    y_str = sentence[i + 1: i + sequence_length + 1]
+    print(i, x_str, '->', y_str)
+
+    x = [char_dic[c] for c in x_str]
+    y = [char_dic[c] for c in y_str]
+
+    dataX.append(x)
+    dataY.append(y)
+
+# In[4]:
+
+
+batch_size = len(dataX)
 
 X = tf.placeholder(tf.int32, [None, sequence_length])
 Y = tf.placeholder(tf.int32, [None, sequence_length])
 
 x_one_hot = tf.one_hot(X, num_classes)
 
-# In[4]:
+# In[5]:
 
 
 # RNN architecture
@@ -49,7 +63,7 @@ outputs, _states = tf.nn.dynamic_rnn(cell, x_one_hot, dtype=tf.float32, initial_
 X_for_fc = tf.reshape(outputs, [-1, hidden_size])
 outputs = tf.contrib.layers.fully_connected(X_for_fc, num_classes, activation_fn=None)
 
-# In[5]:
+# In[6]:
 
 
 # reshape out for sequence_loss
@@ -69,20 +83,17 @@ prediction = tf.argmax(outputs, axis=2)
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     for i in range(50):
-        l, _ = sess.run([loss, train], feed_dict={X: x_data, Y: y_data})
-        result = sess.run(prediction, feed_dict={X: x_data})
+        l, _ = sess.run([loss, train], feed_dict={X: dataX, Y: dataY})
+        result = sess.run(prediction, feed_dict={X: dataX})
 
         result_str = [char_set[c] for c in np.squeeze(result)]
         print(i, "loss:", l)
 
     # Print
-    results = sess.run(outputs, feed_dict={X: x_data})
+    results = sess.run(outputs, feed_dict={X: dataX})
     for j, result in enumerate(results):
         index = np.argmax(result, axis=1)
         if j is 0:
             print(''.join([char_set[t] for t in index]), end='')
         else:
             print(char_set[index[-1]], end='')
-
-
-
